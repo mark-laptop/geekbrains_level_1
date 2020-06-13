@@ -87,26 +87,17 @@ public class MyWriter {
 
     // проверка на содержание переданной строки в файлах указанной директории
     public static boolean containsStringToFilesInDirectory(String directory, String word) throws IOException {
-        File fileDirectory = new File(directory);
-        if (fileDirectory.isFile()) {
-            return false;
-        } else {
-            File[] filesArray = fileDirectory.listFiles();
-            for (File file : filesArray) {
-//                System.out.println(file.getAbsolutePath());
-                if (file.isFile() && containsStringToFile(file.getAbsolutePath(), word))
-                    return true;
-            }
-            return false;
+         File[] filesArray = fileDirectory.listFiles();
+         for (File file : filesArray) {
+//            System.out.println(file.getAbsolutePath());
+            if (file.isFile() && containsStringToFile(file.getAbsolutePath(), word))
+            return true;
         }
+        return false;
     }
 
     // добавление переданной строки в каждый файл в указанной директории
     public static void addStrtingInFilesToDirectory(String directory, String word, boolean deepPass) throws IOException {
-        File fileDirectory = new File(directory);
-        if (fileDirectory.isFile()) {
-            return;
-        }
         File[] filesArray = fileDirectory.listFiles();
         for (File file : filesArray) {
 //            System.out.println(file.getAbsolutePath());
